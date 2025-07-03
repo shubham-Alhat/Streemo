@@ -150,7 +150,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
   // if not found, throw error that user was never registered
   if (!user) {
-    throw new ApiError(404, "user does not exist");
+    throw new ApiError(404, "User of this email does not exist");
   }
 
   // check if password is right
@@ -158,6 +158,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
   if (!isPasswordValid) {
     throw new ApiError(401, "invalid user credentials");
+    // throw new Error("invalid password enter");
   }
 
   // Generate access and refresh token
